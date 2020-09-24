@@ -1,0 +1,28 @@
+def most_frequent(string):
+    #getting the alphabets
+    Dict_1 = {}
+    for i in string:
+        if i in Dict_1:
+            Dict_1[i] += 1
+        else:
+            Dict_1[i] = 1
+    #sorting process
+    sorted_dict = {}
+    i = 0
+    while i < len(Dict_1):
+        big_key = list(Dict_1.keys())[i]
+        big_value = list(Dict_1.values())[i]
+        j = 0
+        while j < len(Dict_1):
+            if big_value < list(Dict_1.values())[j]:
+                big_key = list(Dict_1.keys())[j]
+                big_value = list(Dict_1.values())[j]
+            j += 1
+        sorted_dict[big_key] = big_value
+        del Dict_1[big_key]
+    for k,v in sorted_dict.items():
+        print(k+" = "+str(v))
+
+
+A = input("Please enter a string ")
+most_frequent(A)
